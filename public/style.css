@@ -1,0 +1,27 @@
+.popup {
+    display: none;
+    width: 500px;
+    height: 250px;
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    transform: translate(-25% -25%);
+    background-color: #999;
+    z-index: 1;
+}
+
+.popup_header {
+    display: flex;
+    justify-content: space-between;
+    padding: 5%;
+}
+
+.popup_content {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.active {
+    display: block;
+}
