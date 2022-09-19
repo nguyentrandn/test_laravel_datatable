@@ -44,10 +44,10 @@ class UserController extends Controller
                         return '<input type="checkbox" name="checkbox" value="'.$user->id.'"> ';
                     })
                     ->filter(function ($instance) use ($request) {
-                        if ($request->get('status') == '4' || $request->get('status') == '1' || $request->get('status') == '2'|| $request->get('status') == '3') {
+                        if ($request->get('status')) {
                             $instance->where('status', $request->get('status'));
                         }
-                        if ($request->get('gender') == '1' || $request->get('gender') == '0') {
+                        if ($request->get('gender') == '0' || $request->get('gender') == '1'){
                             $instance->where('grender', $request->get('gender'));
                         }
                         if (!empty($request->get('search'))) {
@@ -60,17 +60,14 @@ class UserController extends Controller
                     })
                     ->rawColumns(['status','id'])
                     ->make(true);
-                    
                 }
-                
-        return view('users');
-                
+        return view('users'); 
     }
     public function delete(Request $request){
         $arr = $request->all();
         UsersModel::whereIn('id', $arr['arr'])->delete();
-        
     }
+
     // Controller Update
     public function update(Request $req){
         $arr = $req->all();
@@ -85,25 +82,25 @@ class UserController extends Controller
                 }
             }
         }
-        // dd($new_status);
         try {
-            //code...
             if ($new_status == 0) {
                 return "Vui long chon tranng thai";
             }else{
                 if ($newArr_id) {
-                    # code...
                     UsersModel::whereIn('id', $newArr_id)
                     ->update(['status' => $new_status]);
                     return 'Update complete.';
                 } else {
                     return 'vui long chon ID';
                 }
-                
             }
         } catch (\Throwable $th) {
             return throw $th;
         }
-
+        // $a =8;
+        // if(isset($a) && $a<0){
+        //     $a= 10;
+        // }
+        // // $a =
     }
 }

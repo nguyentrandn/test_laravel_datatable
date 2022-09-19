@@ -55,7 +55,7 @@
             <form action="" id="form_gender">
                 @csrf
                 <label><strong>Gender :</strong></label>
-                <label for="6"><input type="radio" name="gender" id="6" value="2">Tat ca</label>
+                <label for="6"><input type="radio" name="gender" id="6" value="">Tat ca</label>
                 <label for="7"><input type="radio" name="gender" id="7" value="1">Nam</label>
                 <label for="8"><input type="radio" name="gender" id="8" value="0">Nu</label>
             </form>
@@ -130,7 +130,7 @@ $(document).ready(function() {
                     arr.push($(this).val())
                 }
             })
-            console.log(arr);
+            // console.log(arr);
             data = {
                 arr : arr
             }
@@ -145,6 +145,9 @@ $(document).ready(function() {
                         table.draw();
                     },
                 })
+            .done(function (data){
+                console.log(data);
+            })
         }) 
 
 //   Handler Cancer Popup
